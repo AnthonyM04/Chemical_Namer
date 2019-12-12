@@ -6,7 +6,7 @@ import tokenizer.tokens.Token;
 public class Main {
 
     public static void main(String[] args) throws InvalidExpressionException {
-        String in = "Test";
+        String in = "H";
         Tokenizer tokenizer = new Tokenizer(in);
         Token first = tokenizer.nextToken();
         if (first.toString().equals("H")) {
@@ -21,5 +21,7 @@ public class Main {
             hAmount = Integer.parseInt(t.toString());
             t = tokenizer.nextToken();
         }
+
+        return "";
     }
 }
