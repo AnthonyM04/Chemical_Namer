@@ -3,15 +3,23 @@ import tokenizer.Tokenizer;
 import tokenizer.tokens.NumberToken;
 import tokenizer.tokens.Token;
 
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) throws InvalidExpressionException {
-        String in = "H";
-        Tokenizer tokenizer = new Tokenizer(in);
+    public static void main(String[] args) throws InvalidExpressionException, FileNotFoundException {
+        Scanner in = new Scanner(System.in);
+        Tokenizer tokenizer = new Tokenizer(in.nextLine());
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
+        }
+        /*
         Token first = tokenizer.nextToken();
         if (first.toString().equals("H")) {
             System.out.println(acidCompound(tokenizer));
         }
+         */
     }
 
     public static String acidCompound(Tokenizer tokenizer) throws InvalidExpressionException {
