@@ -22,6 +22,7 @@ public class Main {
          */
     }
 
+    // TODO: Create functions for different compound types
     public static String acidCompound(Tokenizer tokenizer) throws InvalidExpressionException {
         int hAmount = 1;
         Token t = tokenizer.nextToken();

@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be1bc31f-268a-4ca9-a789-2892599f9d47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/simpleNames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574795047187</updated>
       <workItem from="1576174503613" duration="295000" />
-      <workItem from="1576242406165" duration="4710000" />
+      <workItem from="1576242406165" duration="5275000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1576167367972</created>
@@ -131,15 +133,11 @@
       <option name="project" value="LOCAL" />
       <updated>1576171726719</updated>
     </task>
-    <task id="LOCAL-00005" summary="test">
-      <created>1576174462680</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1576174462680</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -158,19 +156,5 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test" />
     <option name="LAST_COMMIT_MESSAGE" value="test" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/tokenizer/Tokenizer.java</url>
-          <line>32</line>
-          <properties class="tokenizer.Tokenizer" method="hasMoreTokens">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -17,7 +17,7 @@ public class Tokenizer {
 
     public Tokenizer(String str) throws FileNotFoundException {
         tokenStr = str.toCharArray();
-        Scanner in = new Scanner(new File("data/elementlist.csv"));
+        Scanner in = new Scanner(new File("data/elementlist.csv")); // TODO: Maybe add more elements
         while (in.hasNextLine()) {
             String[] curLine = in.nextLine().split(",");
             elementHashMap.put(curLine[0], curLine[1]);
@@ -27,12 +27,14 @@ public class Tokenizer {
         }
     }
 
+    // TODO: Implement fix for infinite loop bug
 
     /** Returns next token in str, throws NoSuchElementException if no tokens remain*/
 
     public boolean hasMoreTokens() {
         skipSpaces();
-        return pos < tokenStr.length;
+        return pos < tokenStr.length; // This seems to be causing the bug;
+        // TODO: Fix this section of code to maybe catch edge cases
     }
 
     public Token nextToken() throws InvalidExpressionException {
@@ -57,7 +59,8 @@ public class Tokenizer {
             pos++;
         }
         while (!Character.isUpperCase(tokenStr[pos])) {
-            pos++;
+            pos++; // This might also be the cause of the bug
+            // TODO: find workaround or better solution
         }
     }
 
