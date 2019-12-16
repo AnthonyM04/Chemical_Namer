@@ -24,7 +24,7 @@ public class Main {
          */
     }
 
-    public static ArrayList<Element> readElements(String file) throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects
+    public static ArrayList<Element> readElements(String file) throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects from it
         Scanner in = new Scanner(new File("data/elementlist.csv"));
         in.nextLine();
 
