@@ -55,13 +55,10 @@ public class Tokenizer {
     }
 
     private void skipSpaces() {
-        while (pos < tokenStr.length) {
+        while (pos < tokenStr.length && !Character.isUpperCase(tokenStr[pos])) {
             pos++;
         }
-        while (!Character.isUpperCase(tokenStr[pos])) {
-            pos++; // This might also be the cause of the bug
-            // TODO: find workaround or better solution
-        }
+
     }
 
     private NumberToken readNumberToken () {
@@ -91,6 +88,7 @@ public class Tokenizer {
         if (!eleSymbolList.contains(element.toString())) {
             throw new InvalidExpressionException("Element " + element.toString() + " is not recognized.");
         }
+        pos++;
         return new ElementToken(element.toString());
 
 
