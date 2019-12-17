@@ -12,29 +12,36 @@ import java.util.Scanner;
 public class Tokenizer {
     private char[] tokenStr = null;
     private int pos;
-    private HashMap<String, String> elementHashMap = new HashMap<>();
+    private HashMap<String, ElementToken> elementHashMap = new HashMap<>();
     private ArrayList<String> eleSymbolList = new ArrayList<>();
 
     public Tokenizer(String str) throws FileNotFoundException {
         tokenStr = str.toCharArray();
-        Scanner in = new Scanner(new File("data/elementlist.csv")); // TODO: Maybe add more elements
+        Scanner in = new Scanner(new File("data/chemicalProperties.csv"));
+        in.nextLine();
         while (in.hasNextLine()) {
             String[] curLine = in.nextLine().split(",");
-            elementHashMap.put(curLine[0], curLine[1]);
-            eleSymbolList.add(curLine[0]);
+            elementHashMap.put(curLine[1].trim() ,
+                    new ElementToken(curLine[1], curLine[2], Integer.parseInt(curLine[0]), curLine[3],
+                            curLine[5], Double.parseDouble(curLine[6]),
+                            Integer.parseInt(curLine[7]), Integer.parseInt(curLine[10]),
+                            Integer.parseInt(curLine[11])));
+
+
+
+
+
             // This makes the element HashMap (Symbol -> Name)
             // We may need to make (Name -> Symbol) but that's easy
         }
     }
 
-    // TODO: Implement fix for infinite loop bug
 
     /** Returns next token in str, throws NoSuchElementException if no tokens remain*/
 
     public boolean hasMoreTokens() {
         skipSpaces();
-        return pos < tokenStr.length; // This seems to be causing the bug;
-        // TODO: Fix this section of code to maybe catch edge cases
+        return pos < tokenStr.length;
     }
 
     public Token nextToken() throws InvalidExpressionException {
@@ -47,14 +54,12 @@ public class Tokenizer {
         if (Character.isDigit(tokenStr[pos])) {
             return readNumberToken();
         }
-        else if (Character.isLetter(tokenStr[pos])) {
+        else {
             return readElementToken();
-        } else {
-            return new ElementToken("Bruh");
         }
     }
 
-    private void skipSpaces() {
+    private void skipSpaces() { // This function isn't really useful right now
         while (pos < tokenStr.length && !Character.isUpperCase(tokenStr[pos])) {
             pos++;
         }
@@ -89,7 +94,7 @@ public class Tokenizer {
             throw new InvalidExpressionException("Element " + element.toString() + " is not recognized.");
         }
         pos++;
-        return new ElementToken(element.toString());
+        return elementHashMap.get(element.toString());
 
 
 

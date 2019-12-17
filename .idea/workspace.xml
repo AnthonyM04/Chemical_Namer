@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be1bc31f-268a-4ca9-a789-2892599f9d47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/chemicalProperties.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/chemicalProperties.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/tokens/ElementToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/tokens/ElementToken.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +105,9 @@
       <option name="presentableId" value="Default" />
       <updated>1574795047187</updated>
       <workItem from="1576174503613" duration="295000" />
-      <workItem from="1576242406165" duration="5275000" />
+      <workItem from="1576242406165" duration="5528000" />
+      <workItem from="1576501750084" duration="796000" />
+      <workItem from="1576502563571" duration="2800000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1576167367972</created>

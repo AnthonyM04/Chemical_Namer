@@ -6,33 +6,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ElementToken extends Token {
-    public String value = "";
-    /*
-    public static String[] elementList = {"H", "He",
-            "Li", "Be", "B", "C", "N", "O", "F", "Ne",
-    "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar",
-            "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr",
-    "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe",
-            "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn"};
-    */
-    public ElementToken(String element) { // Removed the check; its handled in Tokenizer instead
-        /*
-        boolean bad = true;
-        for (String s : elementList) {
-            if (element.equals(s)) {
-                bad = false;
-                break;
-            }
+    public String symbol;
+    public String name;
+    public int atomicNumber;
+    public double atomicMass;
+    public String electronConfig;
+    public double electonegativity;
+    public int atomicRadius;
+    public int ionizationEnergy;
+    public int electronAffinity;
+
+
+    public ElementToken(String symbol, String name, int atomicNumber, String atomicMass, String electronConfig, double electonegativity, int atomicRadius, int ionizationEnergy, int electronAffinity) {
+        this.symbol = symbol;
+        this.name = name;
+        this.atomicNumber = atomicNumber;
+
+        char[] massParse = atomicMass.toCharArray();
+        StringBuilder mass = new StringBuilder();
+        for (char n : massParse) {
+            if (Character.isDigit(n) || n == '.')
+                mass.append(n);
         }
-        if (bad) {
-            throw new InvalidExpressionException("Illegal element " + element);
-        }
-         */
-        value = element;
+        this.atomicMass = Double.parseDouble(mass.toString());
+
+        this.electronConfig = electronConfig;
+        this.electonegativity = electonegativity;
+        this.atomicRadius = atomicRadius;
+        this.ionizationEnergy = ionizationEnergy;
+        this.electronAffinity = electronAffinity;
     }
 
     @Override
     public String toString() {
-        return value;
+        return symbol;
     }
 }
