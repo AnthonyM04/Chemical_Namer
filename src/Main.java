@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws InvalidExpressionException, FileNotFoundException {
+        readElements();
+
         Scanner in = new Scanner(System.in);
         Tokenizer tokenizer = new Tokenizer(in.nextLine());
         while (tokenizer.hasMoreTokens()) {
@@ -24,11 +26,25 @@ public class Main {
          */
     }
 
-    public static ArrayList<Element> readElements(String file) throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects from it
-        Scanner in = new Scanner(new File("data/elementlist.csv"));
+    public static ArrayList<Element> readElements() throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects from it
+        Scanner in = new Scanner(new File("data/chemicalProperties.csv"));
         in.nextLine();
 
         ArrayList<Element> elementList = new ArrayList<>();
+
+        ArrayList<String> nonmetals = new ArrayList<String>();
+        nonmetals.add("nonmetal");
+        nonmetals.add("noble gas");
+        nonmetals.add("halogen");
+
+        ArrayList<String> metals = new ArrayList<>();
+        metals.add("alkali metal");
+        metals.add("alkaline earth metal");
+        metals.add("metal");
+        metals.add("transition metal");
+        metals.add("lanthanoid");
+        metals.add("actinoid");
+        metals.add("post-transition metal");
 
         while (in.hasNextLine()) {
 
@@ -43,24 +59,43 @@ public class Main {
 
             //Gets electronegativity of element
             location += 3;
-            double electronegativity = Double.parseDouble(values[location++]);
+            double electronegativity = -1;
+            System.out.println(symbol);
+            if (!values[location].equals("") && values[location].equals(""))
+                electronegativity = Double.parseDouble(values[location++]);
 
             //Gets all (positive) oxidation states of element
-            location += 5;
+            location += 4;
             ArrayList<Integer> oxidationStates = new ArrayList<>();
-            oxidationStates.add(Integer.parseInt(values[location++].substring(1)));
-            while (values[location].charAt(values[location].length() -1) != '"') {
-                oxidationStates.add(Integer.parseInt(values[location++]));
-            }
-            oxidationStates.add(Integer.parseInt(values[location].substring(0, values[location].length() -1)));
-            for (int i = 0; i < oxidationStates.size(); i++) {
-                if (oxidationStates.get(i) < 0) {
-                    oxidationStates.remove(i--);
+            if (!values[location].equals("") && values[location].charAt(0) == '\"') {
+                oxidationStates.add(Integer.parseInt(values[location++].substring(1)));
+                while (values[location].charAt(values[location].length() -1) != '"') {
+                    oxidationStates.add(Integer.parseInt(values[location++]));
                 }
+                oxidationStates.add(Integer.parseInt(values[location].substring(0, values[location].length() -1)));
+                for (int i = 0; i < oxidationStates.size(); i++) {
+                    if (oxidationStates.get(i) < 0) {
+                        oxidationStates.remove(i--);
+                    }
+                }
+            }
+            else if (!values[location].equals("")) {
+                oxidationStates.add(Integer.parseInt(values[location++]));
             }
 
             location+=5;
-            // TODO: Implement getting type of element (IE nonmetal or metal)
+            String metalicCharacter = "";
+
+            if (metals.contains(values[location])) {
+                metalicCharacter += "metal";
+            }
+            else if (nonmetals.contains(values[location])) {
+                metalicCharacter += "nonmetal";
+            }
+
+            // TODO: Calculate valance electrons
+            Element element = new Element(num, symbol, name, electronegativity, oxidationStates, metalicCharacter, 0);
+            elementList.add(element);
 
             // TODO: Finish building element object and add it to elements
         }
