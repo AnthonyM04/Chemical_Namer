@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be1bc31f-268a-4ca9-a789-2892599f9d47" name="Default Changelist" comment="">
+    <list default="true" id="be1bc31f-268a-4ca9-a789-2892599f9d47" name="Default Changelist" comment="Created Element class and began to read from chemicalProperties.csv to get all necessary properties.">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/chemicalProperties.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/chemicalProperties.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/tokens/ElementToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/tokens/ElementToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Chemical Namer/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chemical Namer/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +35,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">

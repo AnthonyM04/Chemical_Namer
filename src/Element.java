@@ -50,4 +50,8 @@ public final class Element {
     public int getValenceElectrons() {
         return valenceElectrons;
     }
+
+    public String fullData() {
+        return String.format("%s - %d: %s %.2f %s %s %d", symbol, num, name, electronegativity, type, oxidationStates, valenceElectrons);
+    }
 }

@@ -60,12 +60,14 @@ public class Main {
             //Gets electronegativity of element
             location += 3;
             double electronegativity = -1;
-            System.out.println(symbol);
-            if (!values[location].equals("") && values[location].equals(""))
-                electronegativity = Double.parseDouble(values[location++]);
 
-            //Gets all (positive) oxidation states of element
-            location += 4;
+            if (!values[location].equals("")) {
+                electronegativity = Double.parseDouble(values[location]);
+            }
+            location++;
+
+            //Gets all (positive) oxidation states of element. Ignores - numbers because we don't care about them
+            location += 5;
             ArrayList<Integer> oxidationStates = new ArrayList<>();
             if (!values[location].equals("") && values[location].charAt(0) == '\"') {
                 oxidationStates.add(Integer.parseInt(values[location++].substring(1)));
@@ -93,11 +95,12 @@ public class Main {
                 metalicCharacter += "nonmetal";
             }
 
-            // TODO: Calculate valance electrons
             Element element = new Element(num, symbol, name, electronegativity, oxidationStates, metalicCharacter, 0);
             elementList.add(element);
+        }
 
-            // TODO: Finish building element object and add it to elements
+        for (Element e : elementList) {
+            System.out.println(e.fullData());
         }
 
         return elementList;
