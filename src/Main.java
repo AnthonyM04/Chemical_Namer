@@ -1,6 +1,4 @@
 import tokenizer.InvalidExpressionException;
-import tokenizer.Tokenizer;
-import tokenizer.tokens.ElementToken;
 import tokenizer.tokens.NumberToken;
 import tokenizer.tokens.Token;
 
@@ -11,8 +9,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws InvalidExpressionException, FileNotFoundException {
-        ArrayList<ElementToken> elementList = readElements();
+    public static void main(String[] args) throws InvalidExpressionException, FileNotFoundException, Exception {
+        ArrayList<Element> elementList = readElements();
 
         Scanner in = new Scanner(System.in);
         Tokenizer tokenizer = new Tokenizer(in.nextLine(), elementList);
@@ -27,11 +25,11 @@ public class Main {
          */
     }
 
-    public static ArrayList<ElementToken> readElements() throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects from it
+    public static ArrayList<Element> readElements() throws Exception { //Reads chemicalProperties.csv and builds a list of element objects from it
         Scanner in = new Scanner(new File("data/chemicalProperties.csv"));
         in.nextLine();
 
-        ArrayList<ElementToken> elementList = new ArrayList<>();
+        ArrayList<Element> elementList = new ArrayList<>();
 
         ArrayList<String> nonmetals = new ArrayList<String>();
         nonmetals.add("nonmetal");
@@ -60,11 +58,11 @@ public class Main {
 
             //Gets electronegativity of element
             location += 3;
-            double electronegativity = -1;
-
-            if (!values[location].equals("")) {
-                electronegativity = Double.parseDouble(values[location]);
-            }
+//            double electronegativity = -1;
+//
+//            if (!values[location].equals("")) {
+//                electronegativity = Double.parseDouble(values[location]);
+//            }
             location++;
 
             //Gets all (positive) oxidation states of element. Ignores - numbers because we don't care about them
@@ -86,7 +84,7 @@ public class Main {
                 oxidationStates.add(Integer.parseInt(values[location++]));
             }
 
-            location+=5;
+            location+=6;
             String metalicCharacter = "";
 
             if (metals.contains(values[location])) {
@@ -96,14 +94,15 @@ public class Main {
                 metalicCharacter += "nonmetal";
             }
 
-            ElementToken element = new ElementToken(
-                    symbol, name, num, electronegativity,
+            //TODO: Fix this
+            Element element = new Element(
+                    symbol, name, num,
                     oxidationStates, metalicCharacter
                     );
             elementList.add(element);
         }
 
-        for (ElementToken e : elementList) {
+        for (Element e : elementList) {
             e.fullData();
         }
 

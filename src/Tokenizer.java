@@ -1,5 +1,4 @@
-package tokenizer;
-
+import tokenizer.InvalidExpressionException;
 import tokenizer.tokens.*;
 
 import java.io.FileNotFoundException;
@@ -11,16 +10,16 @@ import java.util.Scanner;
 public class Tokenizer {
     private char[] tokenStr = null;
     private int pos;
-    private HashMap<String, ElementToken> elementHashMap = new HashMap<>();
-    private ArrayList<ElementToken> elementList;
+    private HashMap<String, Element> elementHashMap = new HashMap<>();
+    private ArrayList<Element> elementList;
     private ArrayList<String> eleSymbolList = new ArrayList<>();
 
-    public Tokenizer(String str, ArrayList<ElementToken> elementList) throws FileNotFoundException {
+    public Tokenizer(String str, ArrayList<Element> elementList) throws FileNotFoundException {
         tokenStr = str.toCharArray();
         this.elementList = elementList;
-        for (ElementToken e : elementList) {
-            eleSymbolList.add(e.toString());
-            elementHashMap.put(e.toString(), e);
+        for (Element e : elementList) {
+            eleSymbolList.add(e.getSymbol());
+            //elementHashMap.put(e.toString(), e);
         }
 
 
@@ -103,8 +102,12 @@ public class Tokenizer {
             throw new InvalidExpressionException("Element " + element.toString() + " is not recognized.");
         }
         pos++;
-        return elementHashMap.get(element.toString());
 
+
+        //TODO: Fix ElementToken to just a simple token type, that takes in a symbol and just stores that. Have the main file handel as much naming as possible
+        return new ElementToken(element.toString());
+
+        //return elementHashMap.get(element.toString());
 
 
 
