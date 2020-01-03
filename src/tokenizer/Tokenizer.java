@@ -2,7 +2,6 @@ package tokenizer;
 
 import tokenizer.tokens.*;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,12 +12,21 @@ public class Tokenizer {
     private char[] tokenStr = null;
     private int pos;
     private HashMap<String, ElementToken> elementHashMap = new HashMap<>();
+    private ArrayList<ElementToken> elementList;
     private ArrayList<String> eleSymbolList = new ArrayList<>();
 
-    public Tokenizer(String str) throws FileNotFoundException {
+    public Tokenizer(String str, ArrayList<ElementToken> elementList) throws FileNotFoundException {
         tokenStr = str.toCharArray();
-        Scanner in = new Scanner(new File("data/chemicalProperties.csv"));
-        in.nextLine();
+        this.elementList = elementList;
+        for (ElementToken e : elementList) {
+            eleSymbolList.add(e.toString());
+            elementHashMap.put(e.toString(), e);
+        }
+
+
+        // Scanner in = new Scanner(new File("data/chemicalProperties.csv"));
+        // in.nextLine();
+        /*
         while (in.hasNextLine()) {
             String[] curLine = in.nextLine().split(",");
             elementHashMap.put(curLine[1].trim() ,
@@ -34,6 +42,7 @@ public class Tokenizer {
             // This makes the element HashMap (Symbol -> Name)
             // We may need to make (Name -> Symbol) but that's easy
         }
+         */
     }
 
 

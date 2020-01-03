@@ -9,36 +9,33 @@ public class ElementToken extends Token {
     public String symbol;
     public String name;
     public int atomicNumber;
-    public double atomicMass;
-    public String electronConfig;
-    public double electonegativity;
-    public int atomicRadius;
-    public int ionizationEnergy;
-    public int electronAffinity;
+    public double electronegativity;
+    public ArrayList<Integer> oxidationStates;
+    public String metallicCharacter;
 
 
-    public ElementToken(String symbol, String name, int atomicNumber, String atomicMass, String electronConfig, double electonegativity, int atomicRadius, int ionizationEnergy, int electronAffinity) {
+
+    public ElementToken(String symbol, String name, int atomicNumber,
+                        double electronegativity, ArrayList<Integer> oxidationStates,
+                        String metallicCharacter) {
         this.symbol = symbol;
         this.name = name;
         this.atomicNumber = atomicNumber;
-
-        char[] massParse = atomicMass.toCharArray();
-        StringBuilder mass = new StringBuilder();
-        for (char n : massParse) {
-            if (Character.isDigit(n) || n == '.')
-                mass.append(n);
-        }
-        this.atomicMass = Double.parseDouble(mass.toString());
-
-        this.electronConfig = electronConfig;
-        this.electonegativity = electonegativity;
-        this.atomicRadius = atomicRadius;
-        this.ionizationEnergy = ionizationEnergy;
-        this.electronAffinity = electronAffinity;
+        this.electronegativity = electronegativity;
+        this.oxidationStates = oxidationStates;
+        this.metallicCharacter = metallicCharacter;
     }
 
     @Override
     public String toString() {
         return symbol;
+    }
+    public void fullData() {
+        System.out.printf("%s [%s, %d]; electronegativity: %f; %s ",
+                name, symbol, atomicNumber, electronegativity, metallicCharacter);
+        for (int i : oxidationStates) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
     }
 }

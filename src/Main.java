@@ -1,5 +1,6 @@
 import tokenizer.InvalidExpressionException;
 import tokenizer.Tokenizer;
+import tokenizer.tokens.ElementToken;
 import tokenizer.tokens.NumberToken;
 import tokenizer.tokens.Token;
 
@@ -11,10 +12,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws InvalidExpressionException, FileNotFoundException {
-        readElements();
+        ArrayList<ElementToken> elementList = readElements();
 
         Scanner in = new Scanner(System.in);
-        Tokenizer tokenizer = new Tokenizer(in.nextLine());
+        Tokenizer tokenizer = new Tokenizer(in.nextLine(), elementList);
         while (tokenizer.hasMoreTokens()) {
             System.out.println(tokenizer.nextToken());
         }
@@ -26,11 +27,11 @@ public class Main {
          */
     }
 
-    public static ArrayList<Element> readElements() throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects from it
+    public static ArrayList<ElementToken> readElements() throws FileNotFoundException { //Reads chemicalProperties.csv and builds a list of element objects from it
         Scanner in = new Scanner(new File("data/chemicalProperties.csv"));
         in.nextLine();
 
-        ArrayList<Element> elementList = new ArrayList<>();
+        ArrayList<ElementToken> elementList = new ArrayList<>();
 
         ArrayList<String> nonmetals = new ArrayList<String>();
         nonmetals.add("nonmetal");
@@ -95,12 +96,15 @@ public class Main {
                 metalicCharacter += "nonmetal";
             }
 
-            Element element = new Element(num, symbol, name, electronegativity, oxidationStates, metalicCharacter, 0);
+            ElementToken element = new ElementToken(
+                    symbol, name, num, electronegativity,
+                    oxidationStates, metalicCharacter
+                    );
             elementList.add(element);
         }
 
-        for (Element e : elementList) {
-            System.out.println(e.fullData());
+        for (ElementToken e : elementList) {
+            e.fullData();
         }
 
         return elementList;
