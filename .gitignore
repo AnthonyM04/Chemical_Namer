@@ -70,3 +70,5 @@
 
 # workspace.xml was causing merge conflicts
 .idea/workspace.xml
+
+*.class
