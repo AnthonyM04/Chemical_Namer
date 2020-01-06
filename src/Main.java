@@ -94,16 +94,14 @@ public class Main {
                 metalicCharacter += "nonmetal";
             }
 
-            //TODO: Fix this
             Element element = new Element(
-                    symbol, name, num,
-                    oxidationStates, metalicCharacter
-                    );
+                    num, symbol, name, oxidationStates,metalicCharacter);
+
             elementList.add(element);
         }
 
         for (Element e : elementList) {
-            e.fullData();
+            System.out.println(e.fullData());
         }
 
         return elementList;
