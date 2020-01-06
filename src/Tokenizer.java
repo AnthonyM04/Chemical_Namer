@@ -61,13 +61,16 @@ public class Tokenizer {
         if (Character.isDigit(tokenStr[pos])) {
             return readNumberToken();
         }
-        else {
+        else if (Character.isLetter(tokenStr[pos])) {
             return readElementToken();
+        }
+        else {
+            throw new InvalidExpressionException("Unknown character " + tokenStr[pos] + " at position " + pos);
         }
     }
 
     private void skipSpaces() { // This function isn't really useful right now
-        while (pos < tokenStr.length && !Character.isUpperCase(tokenStr[pos])) {
+        while (pos < tokenStr.length && !(Character.isUpperCase(tokenStr[pos]) || Character.isDigit(tokenStr[pos]))) {
             pos++;
         }
 
