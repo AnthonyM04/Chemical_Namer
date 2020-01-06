@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be1bc31f-268a-4ca9-a789-2892599f9d47" name="Default Changelist" comment="Created Element class and began to read from chemicalProperties.csv to get all necessary properties.">
-      <change afterPath="$PROJECT_DIR$/data/ideList.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Element.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ryan readme please" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Anthony.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Anthony.xml" afterDir="false" />
+    <list default="true" id="be1bc31f-268a-4ca9-a789-2892599f9d47" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/numPrefixList.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/chemicalProperties.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/chemicalProperties.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chemical Namer/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chemical Namer/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/Tokenizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/Tokenizer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/tokens/ElementToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Chemical Namer/tokenizer/tokens/ElementToken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tokenizer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tokenizer/InvalidExpressionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InvalidExpressionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tokenizer/tokens/ElementToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ElementToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tokenizer/tokens/NumberToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NumberToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tokenizer/tokens/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Token.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +82,7 @@
       <module name="Chemical Namer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tokenizer.tokens.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576171726719</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="I finished reading in elements, but elementToken needs to be fixed. Added TODOs to show where i left off.">
+      <created>1578069683057</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1578069683057</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +169,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="I finished reading in elements, but elementToken needs to be fixed. Added TODOs to show where i left off." />
+    <option name="LAST_COMMIT_MESSAGE" value="I finished reading in elements, but elementToken needs to be fixed. Added TODOs to show where i left off." />
   </component>
 </project>

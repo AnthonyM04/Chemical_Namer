@@ -1,5 +1,3 @@
-package tokenizer;
-
 public class InvalidExpressionException extends Exception {
     public InvalidExpressionException() {
     }

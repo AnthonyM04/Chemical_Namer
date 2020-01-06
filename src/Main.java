@@ -1,7 +1,4 @@
-import tokenizer.InvalidExpressionException;
-import tokenizer.tokens.NumberToken;
-import tokenizer.tokens.Token;
-
+import java.awt.font.NumericShaper;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,20 +6,34 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws InvalidExpressionException, FileNotFoundException, Exception {
+    public static void main(String[] args) throws Exception {
         ArrayList<Element> elementList = readElements();
 
         Scanner in = new Scanner(System.in);
         Tokenizer tokenizer = new Tokenizer(in.nextLine(), elementList);
-        while (tokenizer.hasMoreTokens()) {
-            System.out.println(tokenizer.nextToken());
-        }
-        /*
+
         Token first = tokenizer.nextToken();
-        if (first.toString().equals("H")) {
+
+        if (first instanceof NumberToken) {
+            throw new InvalidExpressionException("Cannot start chemical with number \"" + first.toString() + "\"");
+        }
+
+        ElementToken firstElement = (ElementToken) first;
+
+        if (firstElement.toString().equals("H")) {
             System.out.println(acidCompound(tokenizer));
         }
-         */
+
+
+        //TODO: Work on ionCompound and molecularCompound methods
+        else if (firstElement.element.getType().equals("metal")) {
+            System.out.println(ionCompound(tokenizer, firstElement));
+        }
+
+        else {
+            System.out.println(molecularCompound(tokenizer, firstElement));
+        }
+
     }
 
     public static ArrayList<Element> readElements() throws Exception { //Reads chemicalProperties.csv and builds a list of element objects from it
@@ -108,7 +119,7 @@ public class Main {
     }
 
     // TODO: Create functions for different compound types
-    public static String acidCompound(Tokenizer tokenizer) throws InvalidExpressionException {
+    public static String acidCompound(Tokenizer tokenizer) throws InvalidExpressionException, FileNotFoundException {
         int hAmount = 1;
         Token t = tokenizer.nextToken();
         if (t instanceof NumberToken) {
@@ -117,5 +128,35 @@ public class Main {
         }
 
         return "";
+    }
+
+    public static String ionCompound(Tokenizer tokenizer, ElementToken firstElement) {
+        return "";
+    }
+
+    public static String molecularCompound(Tokenizer tokenizer, ElementToken firstElement) throws InvalidExpressionException, FileNotFoundException {
+        StringBuilder name = new StringBuilder();
+
+        if (!tokenizer.hasMoreTokens()) {
+            return firstElement.element.getName();
+        }
+
+        if (tokenizer.nextToken() instanceof NumberToken) {
+            NumberToken firstAmount = (NumberToken) tokenizer.currentToken();
+            name.append(firstAmount.prefix).append(firstElement.element.getName().toLowerCase());
+        }
+        else {
+            ElementToken secondElement = (ElementToken) tokenizer.currentToken();
+
+            if (!tokenizer.hasMoreTokens()) {
+                name.append(" ").append(secondElement.element.getIdeName());
+            }
+            else {
+                NumberToken secondAmount = (NumberToken) tokenizer.nextToken();
+                name.append(" ").append(secondAmount).append(secondElement.element.getIdeName());
+            }
+        }
+
+        return name.toString();
     }
 }

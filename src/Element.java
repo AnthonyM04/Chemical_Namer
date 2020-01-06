@@ -27,11 +27,11 @@ public final class Element {
                                                 && num != 10
                                                 && num != 18) {
             // Eliminates everything above Iodine (>54) and Kyrpton (36) and Neon (10) and Argon (18)
-            ideName = getIde();
+            ideName = getIdeInternal();
         }
     }
 
-    private String getIde() throws FileNotFoundException {
+    private String getIdeInternal() throws FileNotFoundException {
         Scanner in = new Scanner(new File("data/ideList.csv"));
 
         String lineOn = in.nextLine();
@@ -41,6 +41,10 @@ public final class Element {
         }
 
         return lineOn.split(",")[1];
+    }
+
+    public String getIdeName () {
+        return ideName;
     }
 
     public int getNum() {
@@ -71,5 +75,17 @@ public final class Element {
             returnString.append(String.format("%d ", i));
         returnString.append(ideName);
         return returnString.toString();
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof ElementToken) {
+            return this.symbol.equals(((ElementToken) o).symbol);
+        }
+        else if (o instanceof Element) {
+            return this.symbol.equals(((Element) o).symbol);
+        }
+        else {
+            return false;
+        }
     }
 }

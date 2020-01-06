@@ -1,6 +1,3 @@
-import tokenizer.InvalidExpressionException;
-import tokenizer.tokens.*;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 //import java.util.HashMap;
@@ -13,6 +10,8 @@ public class Tokenizer {
     // private HashMap<String, Element> elementHashMap = new HashMap<>();
     private ArrayList<Element> elementList;
     private ArrayList<String> eleSymbolList = new ArrayList<>();
+
+    private Token lastToken;
 
     public Tokenizer(String str, ArrayList<Element> elementList) throws FileNotFoundException {
         tokenStr = str.toCharArray();
@@ -52,7 +51,7 @@ public class Tokenizer {
         return pos < tokenStr.length;
     }
 
-    public Token nextToken() throws InvalidExpressionException {
+    public Token nextToken() throws InvalidExpressionException, FileNotFoundException {
         skipSpaces();
 
         if (pos >= tokenStr.length) {
@@ -74,7 +73,7 @@ public class Tokenizer {
 
     }
 
-    private NumberToken readNumberToken () {
+    private NumberToken readNumberToken () throws FileNotFoundException {
         int val = 0;
 
         while(pos < tokenStr.length && tokenStr[pos] >= '0' && tokenStr[pos] <= '9') {
@@ -83,7 +82,9 @@ public class Tokenizer {
             pos++;
         }
 
-        return new NumberToken(val);
+        NumberToken num = new NumberToken(val);
+        lastToken = num;
+        return num;
     }
 
     private ElementToken readElementToken() throws InvalidExpressionException {
@@ -103,9 +104,9 @@ public class Tokenizer {
         }
         pos++;
 
-
-        //TODO: Fix ElementToken to just a simple token type, that takes in a symbol and just stores that. Have the main file handel as much naming as possible
-        return new ElementToken(element.toString());
+        ElementToken elementToken = new ElementToken(element.toString(), elementList);
+        lastToken = elementToken;
+        return elementToken;
 
         //return elementHashMap.get(element.toString());
 
@@ -125,5 +126,12 @@ public class Tokenizer {
         return new ElementToken(s.toString());
 
         */
+    }
+
+    public Token currentToken() {
+        if (pos == 0) {
+            throw new IllegalStateException("Tokenizer has not read a token");
+        }
+        return lastToken;
     }
 }
