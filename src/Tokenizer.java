@@ -3,14 +3,14 @@ import tokenizer.tokens.*;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Tokenizer {
     private char[] tokenStr = null;
     private int pos;
-    private HashMap<String, Element> elementHashMap = new HashMap<>();
+    // private HashMap<String, Element> elementHashMap = new HashMap<>();
     private ArrayList<Element> elementList;
     private ArrayList<String> eleSymbolList = new ArrayList<>();
 

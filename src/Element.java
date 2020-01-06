@@ -13,17 +13,17 @@ public final class Element {
     private ArrayList<Integer> oxidationStates;
     private String type;
 
-    private int valenceElectrons;
 
-    public Element(int num, String symbol, String name, ArrayList<Integer> oxidationStates, String type, int valenceElectrons) throws FileNotFoundException {
+    public Element(int num, String symbol, String name,
+                   ArrayList<Integer> oxidationStates, String type
+                   ) throws FileNotFoundException {
         this.num = num;
         this.symbol = symbol;
         this.name = name;
         this.oxidationStates = oxidationStates;
         this.type = type;
-        this.valenceElectrons = valenceElectrons;
 
-        if (type.equals("nonmetal")) {
+        if (type.equals("nonmetal") && num < 54 || num == 36) { // Eliminates everything above Iodine (>54) and Kyrpton (36)
             ideName = getIde();
         }
     }
@@ -34,7 +34,7 @@ public final class Element {
         String lineOn = in.nextLine();
 
         while (in.hasNextLine() && !lineOn.split(",")[0].equals(symbol)) {
-            in.nextLine();
+            lineOn = in.nextLine();
         }
 
         return lineOn.split(",")[1];
@@ -62,6 +62,11 @@ public final class Element {
     }
 
     public String fullData() {
-        return String.format("%s - %d: %s %s %s %d %s", symbol, num, name, type, oxidationStates, ideName);
+        StringBuilder returnString = new StringBuilder();
+        returnString.append(String.format("%s - %d: %s %s ", symbol, num, name, type));
+        for (int i : oxidationStates)
+            returnString.append(String.format("%d ", i));
+        returnString.append(ideName);
+        return returnString.toString();
     }
 }
