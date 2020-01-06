@@ -23,7 +23,10 @@ public final class Element {
         this.oxidationStates = oxidationStates;
         this.type = type;
 
-        if (type.equals("nonmetal") && num < 54 && num != 36) { // Eliminates everything above Iodine (>54) and Kyrpton (36)
+        if (type.equals("nonmetal") && num < 54 && num != 36
+                                                && num != 10
+                                                && num != 18) {
+            // Eliminates everything above Iodine (>54) and Kyrpton (36) and Neon (10) and Argon (18)
             ideName = getIde();
         }
     }
