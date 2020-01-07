@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class NumberToken extends Token {
     public int value = -1;
-    public String prefix = "";
+    public String prefix;
 
     public NumberToken(int value) throws FileNotFoundException {
         this.value = value;
-        if (value < 10) {
+
+        //Gets prefix from numPrefixList.csv
+        if (value <= 10) { //Only from 0-10
             Scanner in = new Scanner(new File("data/numPrefixList.csv"));
             String[] prefixes = in.nextLine().split(",");
             prefix = prefixes[value - 1];
         }
-        else {
+        else { //Otherwise, just make prefix like "11-"
             prefix = "" + value + "-";
         }
     }
