@@ -29,11 +29,12 @@ public class Main {
         */
 
             //TODO: Work on ionCompound and molecularCompound methods
+            /*
             if (firstElement.element.getType().equals("metal")) {
                 System.out.println(ionCompound(tokenizer, firstElement));
-            } else {
+            } else { */
                 System.out.println(molecularCompound(tokenizer, firstElement));
-            }
+            //}
         }
     }
 
@@ -127,10 +128,11 @@ public class Main {
         return "";
     }
 
+    /*
     public static String ionCompound(Tokenizer tokenizer, ElementToken firstElement) {
         return "";
     }
-
+    */
     public static String molecularCompound(Tokenizer tokenizer, ElementToken firstElement) throws InvalidExpressionException, FileNotFoundException {
         StringBuilder name = new StringBuilder();
 
@@ -139,10 +141,14 @@ public class Main {
         }
 
         ElementToken secondElement = null;
-        if (tokenizer.currentToken() instanceof NumberToken) {
+        if (tokenizer.currentToken() instanceof NumberToken && firstElement.element.getType().equals("nonmetal")) {
             NumberToken firstAmount = (NumberToken) tokenizer.currentToken();
             name.append(firstAmount.prefix).append(firstElement.element.getName().toLowerCase());
 
+            secondElement = (ElementToken) tokenizer.nextToken();
+        }
+        else if (tokenizer.currentToken() instanceof NumberToken && firstElement.element.getType().equals("metal")) {
+            name.append(firstElement.element.getName());
             secondElement = (ElementToken) tokenizer.nextToken();
         }
         else {
@@ -153,9 +159,11 @@ public class Main {
         if (!tokenizer.hasMoreTokens()) {
             name.append(" ").append(secondElement.element.getIdeName());
         }
-        else {
+        else if (firstElement.element.getType().equals("nonmetal")) {
             NumberToken secondAmount = (NumberToken) tokenizer.nextToken();
             name.append(" ").append(secondAmount).append(secondElement.element.getIdeName().toLowerCase());
+        } else {
+            name.append(" ").append(secondElement.element.getIdeName());
         }
 
         return name.toString();
