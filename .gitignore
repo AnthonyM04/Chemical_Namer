@@ -72,3 +72,6 @@
 .idea/workspace.xml
 
 *.class
+*.xml
+out
+.idea
